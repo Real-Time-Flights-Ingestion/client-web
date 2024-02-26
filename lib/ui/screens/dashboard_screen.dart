@@ -5,7 +5,6 @@ import '../widgets/flight_delay_chart_widget.dart';
 import '../widgets/flights_details_view_widget.dart';
 import '../widgets/log_list_widget.dart';
 import '../widgets/map_chart_widget.dart';
-import '../widgets/message_stream_view_widget.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -59,7 +58,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   children: [
                     const DashboardControls(),
                     const Divider(),
-                    const MessagesStreamView(),
+                    const SizedBox(
+                      height: 22,
+                    ),
+                    //const MessagesStreamView(),
                     FlightDelayChartColumn(
                       onPointTap: _showDetails,
                     ),

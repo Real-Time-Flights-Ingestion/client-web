@@ -101,10 +101,11 @@ class _FlightDelayChartState extends State<FlightDelayChart> {
                   series: [
                     FastLineSeries<FlightEvent, String>(
                       dataSource: events,
+                      color: widget.arrivalDelay ? Colors.deepOrangeAccent : Colors.green[800],
                       trendlines: [
                         Trendline(
                             type: TrendlineType.linear,
-                            color: Theme.of(context).colorScheme.secondary,
+                            color: Colors.blueAccent,
                             dashArray: const [12, 8]),
                       ],
                       onPointTap: (ChartPointDetails details) {
