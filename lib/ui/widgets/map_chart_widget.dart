@@ -120,7 +120,7 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
                     MapShapeLayer(
                       source: _dataSource,
                       zoomPanBehavior: _zoomPanBehavior,
-                      color: Colors.grey[800],
+                      color: Theme.of(context).brightness == Brightness.light ? Colors.grey : Colors.grey[700],
                       loadingBuilder: (_) => const CircularProgressIndicator(),
                       initialMarkersCount: 0,
                       showDataLabels: true,
