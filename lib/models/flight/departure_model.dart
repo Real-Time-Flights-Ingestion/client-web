@@ -8,7 +8,7 @@ class Departure extends CanBeUnknown {
   final ScheduledTime scheduledTime;
   final RevisedTime revisedTime;
   final RunwayTime runwayTime;
-  final Quality quality;
+  final List<Quality> quality;
   final String checkInDesk;
 
   const Departure({
@@ -30,7 +30,7 @@ class Departure extends CanBeUnknown {
         "revisedTime": revisedTime.toJson(),
         "runwayTime": runwayTime.toJson(),
         "checkInDesk": checkInDesk,
-        "quality": quality.name,
+        "quality": quality.map((e) => e.name),
       };
 
   factory Departure.fromJson(Map<String, dynamic> json) {
@@ -52,9 +52,15 @@ class Departure extends CanBeUnknown {
             ? const RunwayTime.unknown()
             : RunwayTime.fromJson(
                 Map<String, dynamic>.from(json["runwayTime"])),
-        quality: Quality.values.firstWhere(
-            (element) => element.name == json["quality"].toString(),
-            orElse: () => Quality.unknown),
+        quality: (json["quality"] == null || List.from(json["quality"]).isEmpty)
+            ? <Quality>[Quality.unknown]
+            : List.from(json["quality"])
+                .map(
+                  (e) => Quality.values.singleWhere(
+                      (element) => element.name == e,
+                      orElse: () => Quality.unknown),
+                )
+                .toList(),
         checkInDesk: json["checkInDesk"] ?? "unknown");
   }
 
@@ -65,13 +71,13 @@ class Departure extends CanBeUnknown {
         scheduledTime = const ScheduledTime.unknown(),
         revisedTime = const RevisedTime.unknown(),
         runwayTime = const RunwayTime.unknown(),
-        quality = Quality.unknown,
+        quality = const [Quality.unknown],
         checkInDesk = "unknown",
         super(unknown: true);
 
   @override
   String toString() {
-    return 'Departure{terminal: $terminal, gate: $gate, airport: $airport, scheduledTime: $scheduledTime, revisedTime: $revisedTime, runwayTime: $runwayTime, quality: ${quality.name}, checkInDesk: $checkInDesk';
+    return 'Departure{terminal: $terminal, gate: $gate, airport: $airport, scheduledTime: $scheduledTime, revisedTime: $revisedTime, runwayTime: $runwayTime, quality: ${quality.map((e) => e.name)}, checkInDesk: $checkInDesk';
   }
 
   @override

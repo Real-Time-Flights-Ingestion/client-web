@@ -128,7 +128,7 @@ class FlightDetailsView extends StatelessWidget {
                   ),
                   ListTile(
                     leading: const Icon(Icons.stream_rounded),
-                    title: Text(flightDetails.arrival.quality.name),
+                    title: Text(flightDetails.arrival.quality.toString()),
                     subtitle: const Text("Live stream quality"),
                   ),
                 ],
@@ -182,7 +182,7 @@ class FlightDetailsView extends StatelessWidget {
                   ),
                   ListTile(
                     leading: const Icon(Icons.stream_rounded),
-                    title: Text(flightDetails.arrival.quality.name),
+                    title: Text(flightDetails.arrival.quality.toString()),
                     subtitle: const Text("Live stream quality"),
                   ),
                 ],

@@ -9,7 +9,7 @@ class Arrival extends CanBeUnknown {
   final ScheduledTime scheduledTime;
   final RevisedTime revisedTime;
   final RunwayTime runwayTime;
-  final Quality quality;
+  final List<Quality> quality;
 
   const Arrival({
     required this.terminal,
@@ -30,33 +30,38 @@ class Arrival extends CanBeUnknown {
         "scheduledTime": scheduledTime.toJson(),
         "revisedTime": revisedTime.toJson(),
         "runwayTime": runwayTime.toJson(),
-        "quality": quality.name,
+        "quality": quality.map((e) => e.name),
       };
 
   factory Arrival.fromJson(Map<String, dynamic> json) {
     return Arrival(
-        terminal: json["terminal"] ?? "unknown",
-        baggageBelt: json["baggageBelt"] ?? "unknown",
-        gate: json["gate"] ?? "unknown",
-        airport: json["airport"] == null
-            ? const Airport.unknown()
-            : Airport.fromJson(Map<String, dynamic>.from(json["airport"])),
-        scheduledTime: json["scheduledTime"] == null
-            ? const ScheduledTime.unknown()
-            : ScheduledTime.fromJson(
-                Map<String, dynamic>.from(json["scheduledTime"])),
-        revisedTime: json["revisedTime"] == null
-            ? const RevisedTime.unknown()
-            : RevisedTime.fromJson(
-                Map<String, dynamic>.from(json["revisedTime"])),
-        runwayTime: json["runwayTime"] == null
-            ? const RunwayTime.unknown()
-            : RunwayTime.fromJson(
-                Map<String, dynamic>.from(json["runwayTime"])),
-        //TODO cast list
-        quality: Quality.values.firstWhere(
-            (element) => element.name == json["quality"].toString(),
-            orElse: () => Quality.unknown));
+      terminal: json["terminal"] ?? "unknown",
+      baggageBelt: json["baggageBelt"] ?? "unknown",
+      gate: json["gate"] ?? "unknown",
+      airport: json["airport"] == null
+          ? const Airport.unknown()
+          : Airport.fromJson(Map<String, dynamic>.from(json["airport"])),
+      scheduledTime: json["scheduledTime"] == null
+          ? const ScheduledTime.unknown()
+          : ScheduledTime.fromJson(
+              Map<String, dynamic>.from(json["scheduledTime"])),
+      revisedTime: json["revisedTime"] == null
+          ? const RevisedTime.unknown()
+          : RevisedTime.fromJson(
+              Map<String, dynamic>.from(json["revisedTime"])),
+      runwayTime: json["runwayTime"] == null
+          ? const RunwayTime.unknown()
+          : RunwayTime.fromJson(Map<String, dynamic>.from(json["runwayTime"])),
+      quality: (json["quality"] == null || List.from(json["quality"]).isEmpty)
+          ? <Quality>[Quality.unknown]
+          : List.from(json["quality"])
+              .map(
+                (e) => Quality.values.singleWhere(
+                    (element) => element.name == e,
+                    orElse: () => Quality.unknown),
+              )
+              .toList(),
+    );
   }
 
   const Arrival.unknown()
@@ -67,12 +72,12 @@ class Arrival extends CanBeUnknown {
         scheduledTime = const ScheduledTime.unknown(),
         revisedTime = const RevisedTime.unknown(),
         runwayTime = const RunwayTime.unknown(),
-        quality = Quality.unknown,
+        quality = const [Quality.unknown],
         super(unknown: true);
 
   @override
   String toString() {
-    return 'Arrival{terminal: $terminal,baggageBelt: $baggageBelt, gate: $gate, airport: $airport, scheduledTime: $scheduledTime, revisedTime: $revisedTime,runwayTime: $runwayTime, quality: ${quality.name}}';
+    return 'Arrival{terminal: $terminal,baggageBelt: $baggageBelt, gate: $gate, airport: $airport, scheduledTime: $scheduledTime, revisedTime: $revisedTime,runwayTime: $runwayTime, quality: ${quality.map((e) => e.name)}}';
   }
 
   @override
