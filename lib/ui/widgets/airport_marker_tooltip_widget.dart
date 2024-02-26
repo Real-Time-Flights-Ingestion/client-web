@@ -13,6 +13,7 @@ class AirportMarkerTooltip extends StatelessWidget {
     return Container(
       width: 250,
       padding: const EdgeInsets.all(10),
+      color: Theme.of(context).colorScheme.primaryContainer,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

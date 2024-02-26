@@ -54,7 +54,7 @@ class FlightDelayChart extends StatefulWidget {
 
 class _FlightDelayChartState extends State<FlightDelayChart> {
   final ZoomPanBehavior _zoomPanBehavior = ZoomPanBehavior(
-    enableMouseWheelZooming: true,
+    enableMouseWheelZooming: false,
     enablePanning: true,
     enablePinching: true,
   );

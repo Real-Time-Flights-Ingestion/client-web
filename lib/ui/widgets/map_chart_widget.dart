@@ -11,6 +11,7 @@ import '../../models/flight_event.dart';
 import 'map_legend_box_widget.dart';
 
 part 'airport_marker_tooltip_widget.dart';
+
 part 'arc_tooltip_widget.dart';
 
 class MapChart extends StatefulWidget {
@@ -137,11 +138,8 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
                         return AirportMarkerTooltip(
                             marker: _markers.elementAt(index));
                       },
-                      tooltipSettings: MapTooltipSettings(
-                          color:
-                              Theme.of(context).colorScheme.secondaryContainer,
-                          strokeColor: Colors.black,
-                          strokeWidth: 1.5),
+                      tooltipSettings: const MapTooltipSettings(
+                          strokeColor: Colors.black, strokeWidth: 1.5),
                       sublayers: [
                         MapArcLayer(
                           arcs: _routes.values
@@ -158,7 +156,12 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
                               .toSet(),
                           animation: animation,
                           tooltipBuilder: (BuildContext context, int index) {
-                            return ArcTooltip(route: _routes.values.elementAt(index));
+                            return ArcTooltip(
+                              route: _routes.values.elementAt(index),
+                              arrival:
+                                  _routes.values.elementAt(index).toLatLng ==
+                                      locations[_currentIcao],
+                            );
                           },
                         )
                       ],

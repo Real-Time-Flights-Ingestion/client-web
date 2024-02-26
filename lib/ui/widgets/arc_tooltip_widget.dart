@@ -3,16 +3,18 @@ part of 'map_chart_widget.dart';
 class ArcTooltip extends StatelessWidget {
   const ArcTooltip({
     super.key,
-    required this.route,
+    required this.route, required this.arrival,
   });
 
   final Flight route;
+  final bool arrival;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 250,
       padding: const EdgeInsets.all(10),
+      color: arrival ? Colors.deepOrangeAccent : Colors.green[800],
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
