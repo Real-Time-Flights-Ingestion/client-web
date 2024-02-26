@@ -144,7 +144,7 @@ class FlightDetailsView extends StatelessWidget {
                   ListTile(
                     leading: const Icon(Icons.flight_rounded),
                     title: Text(
-                        "${flightDetails.arrival.airport.name} - ${flightDetails.departure.airport.icao} (${flightDetails.departure.airport.iata})"),
+                        "${flightDetails.arrival.airport.name} - ${flightDetails.arrival.airport.icao} (${flightDetails.arrival.airport.iata})"),
                     subtitle: const Text("Airport"),
                   ),
                   ListTile(
