@@ -60,7 +60,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const DashboardControls(),
                     const Divider(),
                     const MessagesStreamView(),
-                    FlightDelayChartRow(
+                    FlightDelayChartColumn(
                       onPointTap: _showDetails,
                     ),
                     MapChart(callback: _showDetails),

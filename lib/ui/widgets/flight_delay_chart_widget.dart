@@ -5,8 +5,8 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../cubits/sse_cubit.dart';
 import '../../models/flight_event.dart';
 
-class FlightDelayChartRow extends StatelessWidget {
-  const FlightDelayChartRow({
+class FlightDelayChartColumn extends StatelessWidget {
+  const FlightDelayChartColumn({
     super.key,
     required this.onPointTap,
   });
@@ -15,22 +15,33 @@ class FlightDelayChartRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Expanded(
-          child: FlightDelayChart(
-            arrivalDelay: true,
-            onPointTap: onPointTap,
+        Center(
+          child: Text(
+            "Arrivals Delay Chart",
+            style: Theme.of(context).textTheme.titleLarge,
           ),
+        ),
+        FlightDelayChart(
+          arrivalDelay: true,
+          onPointTap: onPointTap,
         ),
         const SizedBox(
-          width: 22,
+          height: 22,
         ),
-        Expanded(
-          child: FlightDelayChart(
-            arrivalDelay: false,
-            onPointTap: onPointTap,
+        Center(
+          child: Text(
+            "Departures Delay Chart",
+            style: Theme.of(context).textTheme.titleLarge,
           ),
+        ),
+        FlightDelayChart(
+          arrivalDelay: false,
+          onPointTap: onPointTap,
+        ),
+        const SizedBox(
+          height: 22,
         ),
       ],
     );
@@ -72,10 +83,6 @@ class _FlightDelayChartState extends State<FlightDelayChart> {
           children: [
             Expanded(
               child: SfCartesianChart(
-                  title: ChartTitle(
-                      text: widget.arrivalDelay
-                          ? "Arrivals delay"
-                          : "Departures delay"),
                   primaryXAxis: const CategoryAxis(
                     title: AxisTitle(text: "Flights"),
                     labelPlacement: LabelPlacement.onTicks,
