@@ -9,7 +9,7 @@ import 'cubits/sse_settings_cubit.dart';
 import 'ui/screens/dashboard_screen.dart';
 
 void main() {
-  Logger.root.level = Level.ALL; // defaults to Level.INFO
+  Logger.root.level = Level.INFO; // defaults to Level.INFO
   Logger.root.onRecord.listen((record) {
     if (kDebugMode) {
       print(

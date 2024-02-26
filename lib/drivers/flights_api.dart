@@ -22,7 +22,7 @@ class FlightsApi {
       http.Response response =
           await http.get(Uri.parse("http://$connectionUri"));
       _logger.info(
-          "htpp request: ${response.statusCode} | ${response.reasonPhrase}");
+          "http request: ${response.statusCode} | ${response.reasonPhrase}");
       List<dynamic> body = List.from(jsonDecode(response.body));
       List<Map<String, dynamic>> deserializedBody = body
           .map((e) => <String, dynamic>{
@@ -30,7 +30,7 @@ class FlightsApi {
                     jsonDecode(Map<String, dynamic>.from(e)["value"]))
               })
           .toList();
-      _logger.info("Response body", deserializedBody);
+      _logger.fine("Response body", deserializedBody);
       return List.from(deserializedBody.map((e) => FlightEvent.fromJson(e)));
     } catch (e, s) {
       _logger.warning("Error requesting last flights", e, s);
