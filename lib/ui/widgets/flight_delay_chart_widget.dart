@@ -7,18 +7,21 @@ import '../../models/flight_event.dart';
 
 class FlightDelayChartRow extends StatelessWidget {
   const FlightDelayChartRow({
-    super.key, required this.onPointTap,
+    super.key,
+    required this.onPointTap,
   });
 
   final Function({required String flightNumber}) onPointTap;
-
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: FlightDelayChart(arrivalDelay: true, onPointTap: onPointTap,),
+          child: FlightDelayChart(
+            arrivalDelay: true,
+            onPointTap: onPointTap,
+          ),
         ),
         const SizedBox(
           width: 22,
@@ -59,9 +62,8 @@ class FlightDelayChart extends StatelessWidget {
       builder: (BuildContext context, SseState state) {
         List<FlightEvent> events = state.events.values.toList();
         return SfCartesianChart(
-          title: ChartTitle(
-            text: arrivalDelay ? "Arrivals delay" : "Departures delay"
-          ),
+            title: ChartTitle(
+                text: arrivalDelay ? "Arrivals delay" : "Departures delay"),
             primaryXAxis: const CategoryAxis(
               title: AxisTitle(text: "Flights"),
               labelPlacement: LabelPlacement.onTicks,
@@ -80,6 +82,12 @@ class FlightDelayChart extends StatelessWidget {
             series: [
               FastLineSeries<FlightEvent, String>(
                 dataSource: events,
+                trendlines: [
+                  Trendline(
+                      type: TrendlineType.linear,
+                      color: Theme.of(context).colorScheme.secondary,
+                      dashArray: const [12, 8]),
+                ],
                 onPointTap: (ChartPointDetails details) {
                   if (details.pointIndex != null) {
                     onPointTap(
