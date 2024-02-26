@@ -54,13 +54,7 @@ class Departure extends CanBeUnknown {
                 Map<String, dynamic>.from(json["runwayTime"])),
         quality: (json["quality"] == null || List.from(json["quality"]).isEmpty)
             ? <Quality>[Quality.unknown]
-            : List.from(json["quality"])
-                .map(
-                  (e) => Quality.values.singleWhere(
-                      (element) => element.name == e,
-                      orElse: () => Quality.unknown),
-                )
-                .toList(),
+            : QualityDeserialization.fromStringList(List.from(json["quality"])),
         checkInDesk: json["checkInDesk"] ?? "unknown");
   }
 

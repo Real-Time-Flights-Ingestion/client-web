@@ -34,7 +34,7 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
 
   final Set<Airport> _markers = {};
 
-  final Set<Flight> _routes = {};
+  final Map<String, Flight> _routes = {};
 
   AirportsIcao _currentIcao = AirportsIcao.ellx;
 
@@ -109,7 +109,7 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
                     _mapShapeLayerController.insertMarker(_markers.length - 1);
                   }
                   setState(() {
-                    _routes.add(event.flight);
+                    _routes[event.flight.number] = event.flight;
                   });
                   animationController.reset();
                   animationController.forward(from: 0);
@@ -144,7 +144,7 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
                           strokeWidth: 1.5),
                       sublayers: [
                         MapArcLayer(
-                          arcs: _routes
+                          arcs: _routes.values
                               .map((e) => MapArc(
                                   onTap: () {
                                     widget.callback(flightNumber: e.number);
@@ -158,7 +158,7 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
                               .toSet(),
                           animation: animation,
                           tooltipBuilder: (BuildContext context, int index) {
-                            return ArcTooltip(route: _routes.elementAt(index));
+                            return ArcTooltip(route: _routes.values.elementAt(index));
                           },
                         )
                       ],
