@@ -1,11 +1,11 @@
 {
-    "name": "rtfi_client_web",
-    "short_name": "rtfi_client_web",
+    "name": "Real Time Flight Ingestion UI",
+    "short_name": "RTFI UI",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Real Time Flights Dashboard",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
@@ -19,17 +19,5 @@
             "sizes": "512x512",
             "type": "image/png"
         },
-        {
-            "src": "icons/Icon-maskable-192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "icons/Icon-maskable-512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
-        }
     ]
 }
