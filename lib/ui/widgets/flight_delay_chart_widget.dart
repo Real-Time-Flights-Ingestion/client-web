@@ -19,12 +19,12 @@ class FlightDelayChartColumn extends StatelessWidget {
       children: [
         Center(
           child: Text(
-            "Arrivals Delay Chart",
+            "Departures Delay Chart",
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         FlightDelayChart(
-          arrivalDelay: true,
+          arrivalDelay: false,
           onPointTap: onPointTap,
         ),
         const SizedBox(
@@ -32,12 +32,12 @@ class FlightDelayChartColumn extends StatelessWidget {
         ),
         Center(
           child: Text(
-            "Departures Delay Chart",
+            "Arrivals Delay Chart",
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         FlightDelayChart(
-          arrivalDelay: false,
+          arrivalDelay: true,
           onPointTap: onPointTap,
         ),
         const SizedBox(
