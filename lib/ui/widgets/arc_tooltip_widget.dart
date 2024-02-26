@@ -25,7 +25,9 @@ class ArcTooltip extends StatelessWidget {
                     ? const Icon(Icons.flight_land_rounded)
                     : (route.isAirborne ?? false)
                         ? const Icon(Icons.flight_takeoff_rounded)
-                        : const Icon(Icons.airplane_ticket_rounded),
+                        : (route.notDepartedYet ?? false)
+                            ? const Icon(Icons.airplane_ticket_rounded)
+                            : const Icon(Icons.question_mark_rounded),
               ),
               Text(
                 "${route.number} | ${route.departure.airport.icao} -> ${route.arrival.airport.icao}",

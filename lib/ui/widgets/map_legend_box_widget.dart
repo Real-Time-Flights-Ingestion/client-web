@@ -80,9 +80,22 @@ class MapLegendBox extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(right: 12.0),
-                  child: Icon(Icons.airplane_ticket_rounded),
+                  child: Icon(Icons.question_mark_rounded),
                 ),
                 Text("Unknown")
+              ],
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 8.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(right: 12.0),
+                  child: Icon(Icons.airplane_ticket_rounded),
+                ),
+                Text("At airport")
               ],
             ),
           ),
