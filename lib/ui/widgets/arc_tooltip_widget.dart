@@ -3,7 +3,8 @@ part of 'map_chart_widget.dart';
 class ArcTooltip extends StatelessWidget {
   const ArcTooltip({
     super.key,
-    required this.route, required this.arrival,
+    required this.route,
+    required this.arrival,
   });
 
   final Flight route;

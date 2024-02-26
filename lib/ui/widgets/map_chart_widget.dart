@@ -129,7 +129,8 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
                               .textTheme
                               .labelSmall
                               ?.copyWith(
-                                  color: Theme.of(context).colorScheme.onSurface),
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface),
                           overflowMode: MapLabelOverflow.hide),
                       selectionSettings: const MapSelectionSettings(),
                       controller: _mapShapeLayerController,

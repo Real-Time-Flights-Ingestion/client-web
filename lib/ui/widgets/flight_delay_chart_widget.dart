@@ -73,7 +73,9 @@ class _FlightDelayChartState extends State<FlightDelayChart> {
             Expanded(
               child: SfCartesianChart(
                   title: ChartTitle(
-                      text: widget.arrivalDelay ? "Arrivals delay" : "Departures delay"),
+                      text: widget.arrivalDelay
+                          ? "Arrivals delay"
+                          : "Departures delay"),
                   primaryXAxis: const CategoryAxis(
                     title: AxisTitle(text: "Flights"),
                     labelPlacement: LabelPlacement.onTicks,
@@ -112,11 +114,15 @@ class _FlightDelayChartState extends State<FlightDelayChart> {
                         borderColor: Theme.of(context).colorScheme.onSurface,
                         borderWidth: 1,
                       ),
-                      name: widget.arrivalDelay ? "Arrivals delay" : "Departures delay",
-                      xValueMapper: (FlightEvent event, _) => event.flight.number,
-                      yValueMapper: (FlightEvent event, _) => widget.arrivalDelay
-                          ? event.flight.arrivalDelay?.inMinutes ?? 0
-                          : event.flight.departureDelay?.inMinutes ?? 0,
+                      name: widget.arrivalDelay
+                          ? "Arrivals delay"
+                          : "Departures delay",
+                      xValueMapper: (FlightEvent event, _) =>
+                          event.flight.number,
+                      yValueMapper: (FlightEvent event, _) =>
+                          widget.arrivalDelay
+                              ? event.flight.arrivalDelay?.inMinutes ?? 0
+                              : event.flight.departureDelay?.inMinutes ?? 0,
                       dataLabelSettings: DataLabelSettings(
                           isVisible: true,
                           textStyle: Theme.of(context).textTheme.labelSmall),
@@ -138,12 +144,14 @@ class _FlightDelayChartState extends State<FlightDelayChart> {
                     _zoomPanBehavior.zoomIn();
                   },
                   icon: const Icon(Icons.zoom_in_rounded),
-                ),IconButton(
+                ),
+                IconButton(
                   onPressed: () {
                     _zoomPanBehavior.zoomOut();
                   },
                   icon: const Icon(Icons.zoom_out_rounded),
-                ),IconButton(
+                ),
+                IconButton(
                   onPressed: () {
                     _zoomPanBehavior.reset();
                   },
