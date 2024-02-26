@@ -11,7 +11,6 @@ import '../../models/flight_event.dart';
 import 'map_legend_box_widget.dart';
 
 part 'airport_marker_tooltip_widget.dart';
-
 part 'arc_tooltip_widget.dart';
 
 class MapChart extends StatefulWidget {
@@ -120,7 +119,9 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
                     MapShapeLayer(
                       source: _dataSource,
                       zoomPanBehavior: _zoomPanBehavior,
-                      color: Theme.of(context).brightness == Brightness.light ? Colors.grey : Colors.grey[700],
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Colors.grey
+                          : Colors.grey[700],
                       loadingBuilder: (_) => const CircularProgressIndicator(),
                       initialMarkersCount: 0,
                       showDataLabels: true,
