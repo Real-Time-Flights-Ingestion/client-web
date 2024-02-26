@@ -24,3 +24,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/custom.geo.json
+    - assets/test.geo.json

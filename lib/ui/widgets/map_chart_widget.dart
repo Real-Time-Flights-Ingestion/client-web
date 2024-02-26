@@ -56,7 +56,7 @@ class _MapChartState extends State<MapChart> with TickerProviderStateMixin {
   @override
   void initState() {
     _dataSource = const MapShapeSource.asset(
-      'assets/custom.geo.json',
+      'assets/test.geo.json',
       shapeDataField: 'name',
     );
     animationController = AnimationController(
