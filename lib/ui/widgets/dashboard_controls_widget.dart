@@ -81,6 +81,7 @@ class DashboardControls extends StatelessWidget {
                               : null,
                           icon: const Icon(Icons.pause_rounded)),
                     ),
+                    /*
                     IconButton(
                         onPressed: state is! SseInitialState
                             ? () {
@@ -110,6 +111,8 @@ class DashboardControls extends StatelessWidget {
                               }
                             : null,
                         icon: const Icon(Icons.restart_alt_rounded)),
+
+                     */
                   ],
                 );
               },
@@ -206,6 +209,7 @@ class DashboardControls extends StatelessWidget {
                               : null,
                           icon: const Icon(Icons.pause_rounded)),
                     ),
+                    /*
                     IconButton(
                         onPressed: state is! SseSettingsInitial
                             ? () {
@@ -232,6 +236,7 @@ class DashboardControls extends StatelessWidget {
                             : null,
                         tooltip: "Clear Source Stream cache",
                         icon: const Icon(Icons.clear_all_rounded)),
+                     */
                   ],
                 );
               },
